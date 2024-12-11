@@ -1,8 +1,12 @@
 import Lottie from "lottie-react";
 import registerAnimationLottie from '../../assets/image/register.json.json'
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import AuthContext from "../../Context/AuthContext";
+
+
 
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
     const [passwordError, setPasswordError] = useState("");
 
     const handleRegister = e => {
@@ -20,6 +24,13 @@ const Register = () => {
 
         // Clear the error if password is valid
         setPasswordError("");
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user)
+        })
+        .catch(error => {
+            console.log(error.massage)
+        })
 
         console.log("Registered with:", email, password);
     };
