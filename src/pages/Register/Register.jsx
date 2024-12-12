@@ -2,6 +2,7 @@ import Lottie from "lottie-react";
 import registerAnimationLottie from '../../assets/image/register.json.json'
 import { useContext, useState } from 'react';
 import AuthContext from "../../Context/AuthContext";
+import SocialLogin from "../Shared/SocialLogin";
 
 
 
@@ -44,6 +45,7 @@ const Register = () => {
                     </div>
                     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
                         <h1 className="text-4xl font-bold text-center mt-6">Register now!</h1>
+                        <SocialLogin></SocialLogin>
                         <form onSubmit={handleRegister} className="card-body">
                             <div className="form-control">
                                 <label className="label">
