@@ -6,6 +6,8 @@ import Error from "./Error";
 import Home from "../pages/Home";
 import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
+import JobDetails from "../pages/JobDetails";
+import PrivateRouter from "./PrivateRouter";
 
 
   const router = createBrowserRouter([
@@ -17,6 +19,11 @@ import Login from "../pages/Login/Login";
         {
             path: '/',
             element: <Home></Home>
+        },
+        {
+          path: '/jobs/:id', 
+          element: <PrivateRouter><JobDetails></JobDetails></PrivateRouter>, 
+          loader: ({params}) => fetch(`http://localhost:5000/jobs/${params.id}`)
         },
         {
           path:'/register', 
