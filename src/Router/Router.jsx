@@ -8,17 +8,23 @@ import Register from "../pages/Register/Register";
 import Login from "../pages/Login/Login";
 import JobDetails from "../pages/JobDetails";
 import PrivateRouter from "./PrivateRouter";
+import JobApply from "../pages/JobApply";
+import MyApplication from "../pages/MyApplication";
 
 
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout></MainLayout>, 
+      element: <MainLayout></MainLayout>,  
       errorElement: <Error></Error>,
       children: [
         {
             path: '/',
             element: <Home></Home>
+        },
+        {
+          path: '/jobApply/:id', 
+          element: <PrivateRouter><JobApply></JobApply></PrivateRouter>
         },
         {
           path: '/jobs/:id', 
@@ -32,6 +38,10 @@ import PrivateRouter from "./PrivateRouter";
         {
           path: '/login',
           element: <Login></Login>,
+        },
+        {
+          path: '/myApplication', 
+          element: <PrivateRouter><MyApplication></MyApplication></PrivateRouter>
         }
       ]
     },

@@ -1,6 +1,6 @@
 import { FaDollarSign } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
 
 const JobDetails = () => {
@@ -38,7 +38,7 @@ const JobDetails = () => {
                     </div>
                     <div className="card-actions  justify-end items-center mt-4">
                         <p className="flex  items-center">Salary: <FaDollarSign className="text-gray-400"/>{job.salaryRange.min} - {job.salaryRange.max} {job.currency}</p>
-                        <button className="btn bg-blue-600 text-black">Apply</button>
+                       <Link to={`/jobApply/${job._id}`}> <button className="btn bg-blue-600 text-black">Apply</button></Link>
                     </div>
                 </div>
             </div>
