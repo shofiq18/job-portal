@@ -4,6 +4,7 @@ import loginAnimationLottie from '../../assets/image/login.json.json';
 import AuthContext from '../../Context/AuthContext';
 import SocialLogin from '../Shared/SocialLogin';
 import { useLocation, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Login = () => {
     const {loginUser} = useContext(AuthContext);
@@ -22,11 +23,20 @@ const Login = () => {
         const password = form.password.value;
 
         console.log(email, password);
+
+
+
         loginUser(email, password)
         .then(result => {
-            console.log( result.user)
-            navigate(from)
+            console.log('sign in ' ,  result.user.email)
+            const user = {email: result.user.email}
 
+            axios.post('http://localhost:5000/jwt', user, {withCredentials: true})
+            .then(res => {
+                console.log(res.data);
+            })
+            navigate('/')
+            // navigate(from)
         })
         .catch(error => {
             console.log(error.massage)
