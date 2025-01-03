@@ -1,4 +1,4 @@
-import { p } from "motion/react-client";
+
 import { FaDollarSign } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
